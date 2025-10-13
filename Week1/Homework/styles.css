@@ -3,8 +3,7 @@
   height: 70px;
   position: sticky;
   top: 0;
-  border: 1px solid;
-  border-color: rgb(194, 192, 192);
+
   background-color: white;
   justify-content: space-between;
   align-items: center;
@@ -55,4 +54,58 @@
 .right > a > img {
   width: 20px;
   height: 20px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background-color: #eafff6;
+  padding: 10px 30px;
+  border-radius: 0 0 20px 20px;
+}
+
+.hero > img {
+  width: 170px;
+  height: 170px;
+  aspect-ratio: auto;
+  object-fit: cover;
+  border: 1px solid;
+  border-color: rgb(194, 192, 192);
+  border-radius: 50%;
+  background-color: white;
+}
+
+.hero > img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 5px rgba(170, 170, 170, 0.3);
+}
+
+.introduction > div {
+  display: flex;
+  gap: 10px;
+}
+
+.introduction > h1 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.introduction > p {
+  margin: 10px 0 15px 0;
+  font-size: 15px;
+  color: rgb(96, 96, 96);
+}
+
+.introduction > div > a {
+  border-radius: 50px;
+  padding: 10px 18px;
+  background-color: rgb(189, 230, 186);
+  color: black;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.introduction > div > a:hover {
+  transform: scale(1.1);
 }
