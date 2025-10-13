@@ -1,4 +1,4 @@
-.header {
+header {
   display: flex;
   height: 70px;
   position: sticky;
@@ -131,4 +131,12 @@
   border-radius: 20px;
   border: none;
   background-color: rgb(255, 207, 118);
+}
+
+footer {
+  display: flex;
+  background-color: #f3b0f8;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
 }
