@@ -109,3 +109,26 @@
 .introduction > div > a:hover {
   transform: scale(1.1);
 }
+
+.skill {
+  padding: 15px;
+  background-color: #feefff;
+}
+
+.skill > h1 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+.skill > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill > div > button {
+  padding: 8px 13px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(255, 207, 118);
+}
