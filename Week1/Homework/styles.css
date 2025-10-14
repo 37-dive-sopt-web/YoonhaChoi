@@ -133,6 +133,70 @@ header {
   background-color: rgb(255, 207, 118);
 }
 
+.card-section {
+  padding: 15px;
+  background-color: #ffdae9;
+}
+
+.card-section > h1 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 5px rgba(170, 170, 170, 0.3);
+}
+
+.card > img {
+  height: 150px;
+  object-fit: cover;
+}
+
+.button {
+  position: absolute;
+  top: 160px;
+  right: 10px;
+  background-color: pink;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  color: #ff3b5c;
+  font-size: 17px;
+}
+
+.button:hover {
+  background-color: rgb(255, 166, 181);
+  transform: scale(1.1);
+}
+
+.explanation > p {
+  margin: 0 0 30px 0;
+  color: gray;
+}
+
+.explanation {
+  padding: 0 15px;
+}
+
 footer {
   display: flex;
   background-color: #f3b0f8;
