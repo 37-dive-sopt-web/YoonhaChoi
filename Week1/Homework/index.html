@@ -31,14 +31,15 @@
 
     <div class="container">
       <ul class="nav">
-        <li><a>소개</a></li>
-        <li><a>나의 스킬</a></li>
-        <li><a>나의 모습</a></li>
-        <li><a>사진첩</a></li>
-        <li><a>한마디</a></li>
+        <li class="first"><a href="#hero">소개</a></li>
+        <li><a href="#skill">나의 스킬</a></li>
+        <li><a href="#card">나의 모습</a></li>
+        <li><a href="#photo">사진첩</a></li>
+        <li class="last"><a href="#footer">한마디</a></li>
       </ul>
+
       <main>
-        <section class="hero">
+        <section class="hero" id="hero">
           <img src="./images/pocoyo.svg" alt="최윤하 프로필 사진" />
           <div class="introduction">
             <h1>안녕하세요 매우 반가워요 방가방가</h1>
@@ -54,7 +55,7 @@
           </div>
         </section>
 
-        <section class="skill">
+        <section class="skill" id="skill">
           <h1 class="h1">나의 스킬과 관심사</h1>
           <div>
             <button>리액트</button>
@@ -70,7 +71,7 @@
           </div>
         </section>
 
-        <section class="card-section">
+        <section class="card-section" id="card">
           <h1 class="h1">나의 모습</h1>
           <div class="card-list">
             <div class="card">
@@ -129,7 +130,7 @@
           </div>
         </section>
 
-        <section class="photo">
+        <section class="photo" id="photo">
           <h1 class="h1">사진첩</h1>
           <div class="photo-list">
             <img src="./images/ham.svg" alt="이미지" />
@@ -142,7 +143,7 @@
           </div>
         </section>
 
-        <footer>읽어주셔서 감사합니다.</footer>
+        <footer id="footer">읽어주셔서 감사합니다.</footer>
       </main>
     </div>
   </body>
