@@ -8,6 +8,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px 0 20px;
+  z-index: 1;
 }
 
 .left {
@@ -115,7 +116,7 @@ header {
   background-color: #feefff;
 }
 
-.skill > h1 {
+.h1 {
   margin: 0 0 10px 0;
   font-size: 20px;
 }
@@ -136,11 +137,6 @@ header {
 .card-section {
   padding: 15px;
   background-color: #ffdae9;
-}
-
-.card-section > h1 {
-  margin: 0 0 10px 0;
-  font-size: 20px;
 }
 
 .card-list {
@@ -197,9 +193,38 @@ header {
   padding: 0 15px;
 }
 
+.photo {
+  padding: 15px;
+  background-color: rgb(242, 202, 255);
+}
+
+.photo-list {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 20px;
+  -ms-overflow-style: none;
+}
+.photo-list::-webkit-scrollbar {
+  display: none;
+}
+
+.photo-list > img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.photo-list > img:hover {
+  transform: scale(1.05);
+}
+
 footer {
   display: flex;
-  background-color: #f3b0f8;
+  background-color: #feebff;
   height: 70px;
   justify-content: center;
   align-items: center;
