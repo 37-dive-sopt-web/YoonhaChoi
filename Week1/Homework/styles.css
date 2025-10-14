@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  background-color: rgb(255, 238, 255);
+}
+
 header {
   display: flex;
   height: 70px;
@@ -5,7 +10,7 @@ header {
   top: 0;
 
   background-color: white;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 0 20px 0 20px;
   z-index: 1;
@@ -112,12 +117,11 @@ header {
 }
 
 .skill {
-  padding: 15px;
-  background-color: #feefff;
+  padding-top: 80px;
 }
 
 .h1 {
-  margin: 0 0 10px 0;
+  margin: 0 0 20px 0;
   font-size: 20px;
 }
 
@@ -135,8 +139,7 @@ header {
 }
 
 .card-section {
-  padding: 15px;
-  background-color: #ffdae9;
+  padding-top: 80px;
 }
 
 .card-list {
@@ -194,8 +197,7 @@ header {
 }
 
 .photo {
-  padding: 15px;
-  background-color: rgb(242, 202, 255);
+  padding-top: 80px;
 }
 
 .photo-list {
@@ -220,6 +222,13 @@ header {
 
 .photo-list > img:hover {
   transform: scale(1.05);
+}
+
+.nav {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 footer {
