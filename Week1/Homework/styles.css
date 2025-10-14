@@ -16,6 +16,15 @@ header {
   z-index: 1;
 }
 
+.container {
+  display: flex;
+}
+
+main {
+  flex-grow: 1;
+  overflow-x: hidden;
+}
+
 .left {
   width: 45px;
   height: 45px;
@@ -227,8 +236,32 @@ header {
 .nav {
   display: none;
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 15px;
+  border-radius: 20px;
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+  background-color: #ffffff;
+}
+
+.nav li a {
+  display: block;
+  padding: 10px 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.nav li a:hover {
+  background-color: #eafff6;
+  border-radius: 20px;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: block;
+    position: sticky;
+    top: 90px;
+  }
 }
 
 footer {
