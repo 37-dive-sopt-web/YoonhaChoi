@@ -18,8 +18,10 @@
 .header-title {
   justify-self: center;
   font-size: 2rem;
+  white-space: nowrap;
 }
 .header-name {
   justify-self: end;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
