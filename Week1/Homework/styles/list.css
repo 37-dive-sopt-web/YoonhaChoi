@@ -1,0 +1,27 @@
+.member-list {
+  border-collapse: collapse;
+}
+
+.list-title {
+  display: grid;
+  grid-template-columns: auto 6rem 4rem;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+thead {
+  background-color: var(--point-color);
+  border-bottom: var(--font-color) 1px solid;
+}
+
+th {
+  padding: 0.7rem 0;
+}
+
+th:nth-child(1) {
+  width: 3%;
+}
+
+th:nth-child(2) {
+  width: 12%;
+}

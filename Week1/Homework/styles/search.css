@@ -1,14 +1,3 @@
-.search {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-
-  padding: 2rem;
-  border-radius: 20px;
-  background-color: var(--sub-color);
-  max-width: 80rem;
-}
-
 form {
   display: grid;
   gap: 0.8rem;

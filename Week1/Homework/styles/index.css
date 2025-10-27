@@ -1,3 +1,15 @@
+:root {
+  /* 컬러 */
+  --main-color: #ffebfa;
+  --point-color: #fcf0f6;
+  --sub-color: #ffffff;
+  --font-color: #aaaaaa;
+
+  /* 폰트 크기 */
+  --font-md: 1rem;
+  --font-sm: 0.8rem;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -16,14 +28,14 @@ h2 {
   margin: 0 0 1rem;
 }
 
-:root {
-  /* 컬러 */
-  --main-color: #ffebfa;
-  --point-color: #ffeef6;
-  --sub-color: #ffffff;
-  --font-color: #aaaaaa;
+section {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 
-  /* 폰트 크기 */
-  --font-md: 1rem;
-  --font-sm: 0.8rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  background-color: var(--sub-color);
+  max-width: 80rem;
 }
