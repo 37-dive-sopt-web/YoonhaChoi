@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #fff5fc;
+}
+
+main {
+  margin-top: 8.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+:root {
+  /* 컬러 */
+  --main-color: #ffebfa;
+  --point-color: #ffeef6;
+  --sub-color: #ffffff;
+  --font-color: #aaaaaa;
+
+  /* 폰트 크기 */
+  --font-md: 1.2rem;
+  --font-sm: 1rem;
+}

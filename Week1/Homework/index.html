@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹계인 관리 페이지</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/search.css" />
+  </head>
+  <body>
+    <header class="header">
+      <span class="header-logo">🦦</span>
+      <h1 class="header-title">웹계인 관리 페이지</h1>
+      <span class="header-name">🛸DiVE SOPT 37기 웹파트 최윤하🛸</span>
+    </header>
+    <main>
+      <section class="search">
+        <h2>검색 필터</h2>
+        <form>
+          <label for="name">이름</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름을 입력하세요"
+          />
+
+          <label for="english-name">영문 이름</label>
+          <input
+            type="text"
+            id="english-name"
+            name="englishName"
+            placeholder="영문 이름을 입력하세요"
+          />
+
+          <label for="github">깃허브</label>
+          <input
+            type="text"
+            id="github"
+            name="github"
+            placeholder="깃허브 아이디를 입력하세요"
+          />
+
+          <label for="gender">성별</label>
+          <select id="gender" name="gender">
+            <option value="">전체</option>
+            <option value="female">여자</option>
+            <option value="male">남자</option>
+          </select>
+
+          <label for="role">역할</label>
+          <select id="role" name="role">
+            <option value="">전체</option>
+            <option value="yb">YB</option>
+            <option value="ob">OB</option>
+          </select>
+
+          <label for="team">금잔디조</label>
+          <input
+            type="number"
+            id="team"
+            name="team"
+            placeholder="금잔디조를 입력하세요 (1~9)"
+          />
+          <label for="age">나이</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            placeholder="나이를 입력하세요"
+          />
+
+          <button type="submit">적용</button>
+          <button type="reset">초기화</button>
+        </form>
+      </section>
+      <section>
+        <h2>37기 웹 파트 목록</h2>
+      </section>
+    </main>
+  </body>
+</html>
