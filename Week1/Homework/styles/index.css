@@ -1,7 +1,7 @@
 :root {
   /* 컬러 */
-  --main-color: #ffebfa;
-  --point-color: #fcf0f6;
+  --main-color: #fdfb83;
+  --point-color: #fff700;
   --sub-color: #ffffff;
   --font-color: #aaaaaa;
 
@@ -16,7 +16,7 @@
 
 body {
   margin: 0;
-  background-color: #fff5fc;
+  background-color: #f7fae4;
 }
 
 main {
