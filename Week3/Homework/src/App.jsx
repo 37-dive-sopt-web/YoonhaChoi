@@ -2,7 +2,7 @@ import Header from "./components/header";
 
 function App() {
   return (
-    <div>
+    <div className="min-h-screen bg-green-50 p-6">
       <Header />
     </div>
   );
