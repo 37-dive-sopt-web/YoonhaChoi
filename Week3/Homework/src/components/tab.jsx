@@ -1,5 +1,5 @@
 const Tab = ({ children, isActive = false, variant = "state", onClick }) => {
-  let base = "cursor-pointer whitespace-nowrap px-4 py-1 rounded-full text-sm";
+  let base = "cursor-pointer whitespace-nowrap px-4 h-8 rounded-full text-sm";
 
   let state = "";
 
