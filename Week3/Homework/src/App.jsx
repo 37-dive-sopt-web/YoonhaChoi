@@ -1,13 +1,15 @@
 import Header from "./components/header";
-import GameBoard from "./components/game-border-section/game-board";
-import LevelSection from "./components/level-section/level-section";
+import { useTabControl } from "./hooks/use-tab-control";
+
 function App() {
+  const { activeTab, handleTab, renderContent } = useTabControl("게임");
+
   return (
-    <div className="min-h-screen bg-green-50 p-6">
-      <Header />
-      <div className="flex justify-between rounded-2xl bg-green-100 p-6">
-        <GameBoard />
-        <LevelSection />
+    <div className="flex min-h-screen flex-col bg-green-50 p-6">
+      <Header activeTab={activeTab} handleTab={handleTab} />
+
+      <div className="mt-5 flex-1 overflow-y-auto rounded-2xl bg-green-100">
+        {renderContent()}
       </div>
     </div>
   );

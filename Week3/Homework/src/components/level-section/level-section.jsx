@@ -3,12 +3,12 @@ import LevelSelet from "./level-selet";
 
 const LevelSection = () => {
   return (
-    <div className="flex w-100 flex-col gap-4 rounded-2xl bg-gray-200/50 p-4">
+    <div className="flex min-w-100 flex-col gap-4 rounded-2xl bg-gray-200/50 p-4">
       <LevelSelet />
       <div className="flex gap-2">
         <GameItem title={"남은 시간"} value={"45.00"} />
-        <GameItem title={"남은 시간"} value={"45.00"} />
-        <GameItem title={"남은 시간"} value={"45.00"} />
+        <GameItem title={"성공한 짝"} value={"45.00"} />
+        <GameItem title={"남은 짝"} value={"45.00"} />
       </div>
       <span className="font-bold">안내 메시지</span>
       <div className="p flex w-full items-center justify-between rounded-2xl bg-green-50 px-3 py-6 font-bold">
