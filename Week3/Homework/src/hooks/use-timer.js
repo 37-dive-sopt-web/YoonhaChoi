@@ -73,5 +73,6 @@ export const useTimer = (level) => {
     startTimer,
     stopTimer,
     resetTimer,
+    limitTime,
   };
 };

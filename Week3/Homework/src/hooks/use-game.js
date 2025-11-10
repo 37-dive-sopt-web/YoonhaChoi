@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useMemo } from "react";
 
 const CARD_STATUS = {
   CLOSED: "closed",
@@ -11,6 +11,9 @@ export const useGame = (deck, timer) => {
   const [openCardIds, setOpenCardIds] = useState([]); //현재 앞면이 보이는 카드 ID (최대 2개)
   const [matchedPairs, setMatchedPairs] = useState(0); // 성공한 짝의 쌍(Pair) 개수
   const [isProcessing, setIsProcessing] = useState(false); // 짝 검사 중 클릭을 막는 잠금 플래그
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [isWin, setIsWin] = useState(false);
+  const [finishTime, setFinishTime] = useState(null);
 
   // 덱이 변경될 때마다 게임 상태 초기화
   useEffect(() => {
@@ -22,6 +25,10 @@ export const useGame = (deck, timer) => {
     setOpenCardIds([]);
     setMatchedPairs(0);
     setIsProcessing(false);
+
+    setIsGameOver(false);
+    setIsWin(false);
+    setFinishTime(null);
   }, [deck]);
 
   // 짝 검사 로직
@@ -64,7 +71,24 @@ export const useGame = (deck, timer) => {
     }
   }, [openCardIds, deck]);
 
-  // 카드 클릭 핸들러
+  useEffect(() => {
+    const totalPairs = deck.length / 2;
+    const isRunning = timer.isRunning;
+    const isTimeOver = timer.isTimeOver;
+
+    if (matchedPairs > 0 && matchedPairs === totalPairs && isRunning) {
+      timer.stopTimer();
+      setIsGameOver(true);
+      setIsWin(true);
+
+      const timeTaken = (timer.limitTime - timer.timeLeft) / 1000;
+      setFinishTime(timeTaken.toFixed(2));
+    } else if (isTimeOver && !isGameOver) {
+      setIsGameOver(true);
+      setIsWin(false);
+    }
+  }, [matchedPairs, deck.length, timer]);
+
   const handleCardClick = useCallback(
     (clickedCardId) => {
       if (isProcessing || cardStates[clickedCardId] !== CARD_STATUS.CLOSED) {
@@ -87,21 +111,14 @@ export const useGame = (deck, timer) => {
     [cardStates, timer, isProcessing, openCardIds],
   );
 
-  // 모든 짝을 맞췄을 때 타이머 정지
-  useEffect(() => {
-    const totalPairs = deck.length / 2;
-    if (matchedPairs > 0 && matchedPairs === totalPairs) {
-      if (timer && timer.stopTimer) {
-        timer.stopTimer();
-      }
-    }
-  }, [matchedPairs, deck.length, timer]);
-
   return {
     cardStates,
     matchedPairs,
     handleCardClick,
     totalPairs: deck.length / 2,
     isProcessing,
+    isGameOver,
+    isWin,
+    finishTime,
   };
 };
