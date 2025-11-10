@@ -1,6 +1,10 @@
 import Tab from "../tab";
 import Card from "./card";
-const GameBoard = () => {
+import { LEVEL_TO_GRID } from "../../utils/random-deck";
+
+const GameBoard = ({ deck, level }) => {
+  const [, cols] = LEVEL_TO_GRID[level] || [4, 4];
+
   return (
     <div>
       <div className="flex justify-between">
@@ -11,8 +15,15 @@ const GameBoard = () => {
           게임 리셋
         </Tab>
       </div>
-      <div className="mx-45">
-        <Card />
+      <div
+        className="grid gap-2"
+        style={{
+          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+        }}
+      >
+        {deck.map((card) => (
+          <Card key={card.id} value={card.value} />
+        ))}
       </div>
     </div>
   );

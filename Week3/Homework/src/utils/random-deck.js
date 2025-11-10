@@ -30,9 +30,14 @@ export function shuffle(array, rng = Math.random) {
  * 반환값은 섞인 카드 배열입니다. 형식: { id: string, value: number }[]
  * 제공 코드 그대로 사용하셔도 되고, 파일 분리/네이밍 변경 모두 자유입니다.
  */
-export function buildDeck(level = 1) {
-  const LEVEL_TO_GRID = { 1: [4, 4], 2: [4, 6], 3: [6, 6] };
 
+export const LEVEL_TO_GRID = {
+  1: [4, 4],
+  2: [4, 6],
+  3: [6, 6],
+};
+
+export function buildDeck(level = 1) {
   const [rows, cols] = LEVEL_TO_GRID[level] ?? [4, 4];
   const total = rows * cols;
 
@@ -53,3 +58,8 @@ export function buildDeck(level = 1) {
   // 매 게임마다 다른 배치를 위해 마지막에 셔플
   return shuffle(duplicated);
 }
+
+export const getGridColumns = (level) => {
+  const [, cols] = LEVEL_TO_GRID[level] || [4, 4];
+  return `grid-cols-${cols}`;
+};

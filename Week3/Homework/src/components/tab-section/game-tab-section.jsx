@@ -1,13 +1,13 @@
 import GameBoard from "../game-border-section/game-board";
 import LevelSection from "../level-section/level-section";
 
-const GameTabSection = () => {
+const GameTabSection = ({ level, deck, onLevelChange }) => {
   return (
     <div className="flex justify-between overflow-x-auto rounded-2xl bg-green-100 p-6">
       <div className="mr-6 min-w-3xl flex-1">
-        <GameBoard />
+        <GameBoard level={level} deck={deck} />
       </div>
-      <LevelSection />
+      <LevelSection level={level} onLevelChange={onLevelChange} />
     </div>
   );
 };
