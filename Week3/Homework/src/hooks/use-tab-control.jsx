@@ -9,9 +9,16 @@ export const useTabControl = (initialTab = "게임") => {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [level, setLevel] = useState(1);
 
+  const [deckKey, setDeckKey] = useState(0);
+
   const timer = useTimer(level);
-  const deck = useMemo(() => buildDeck(level), [level]);
+  const deck = useMemo(() => buildDeck(level), [level, deckKey]);
   const game = useGame(deck, timer);
+
+  const handleGameReset = useCallback(() => {
+    timer.resetTimer();
+    setDeckKey((prev) => prev + 1);
+  }, [timer]);
 
   const handleTab = useCallback(
     (tabName) => {
@@ -34,6 +41,7 @@ export const useTabControl = (initialTab = "게임") => {
           onLevelChange={handleLevelChange}
           timer={timer}
           game={game}
+          onGameReset={handleGameReset}
         />
       );
     }

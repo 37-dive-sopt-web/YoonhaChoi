@@ -2,10 +2,10 @@ import Tab from "../tab";
 import Card from "./card";
 import { LEVEL_TO_GRID } from "../../utils/random-deck";
 
-const GameBoard = ({ deck, level, timer, game }) => {
+const GameBoard = ({ deck, level, timer, game, onGameReset }) => {
   const [, cols] = LEVEL_TO_GRID[level] || [4, 4];
 
-  const { startTimer, resetTimer, isRunning, isTimeOver } = timer;
+  const { startTimer, isRunning, isTimeOver } = timer;
   const {
     handleCardClick: gameCardClickHandler,
     cardStates,
@@ -26,7 +26,7 @@ const GameBoard = ({ deck, level, timer, game }) => {
         <h2 className="nowrap mb-4 text-2xl font-bold whitespace-nowrap">
           게임 보드
         </h2>
-        <Tab variant="reset" onClick={resetTimer}>
+        <Tab variant="reset" onClick={onGameReset}>
           게임 리셋
         </Tab>
       </div>

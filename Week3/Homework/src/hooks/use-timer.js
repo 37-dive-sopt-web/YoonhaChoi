@@ -16,6 +16,7 @@ export const useTimer = (level) => {
   const [isRunning, setIsRunning] = useState(false);
   const [isTimeOver, setIsTimeOver] = useState(false);
 
+  // 레벨이 변경될 때마다 타이머 초기화
   useEffect(() => {
     setTimeLeft(limitTime);
     setIsRunning(false);
@@ -31,6 +32,12 @@ export const useTimer = (level) => {
   const stopTimer = useCallback(() => {
     setIsRunning(false);
   }, []);
+
+  const resetTimer = useCallback(() => {
+    setTimeLeft(limitTime);
+    setIsRunning(false);
+    setIsTimeOver(false);
+  }, [limitTime]);
 
   useEffect(() => {
     if (!isRunning || timeLeft <= 0) {
@@ -48,6 +55,7 @@ export const useTimer = (level) => {
     return () => clearInterval(intervalId);
   }, [isRunning, timeLeft, isTimeOver]);
 
+  // 시간 형식 변환 함수
   const formatTime = useCallback((time) => {
     const seconds = Math.floor(time / 1000);
     const milliseconds = Math.floor((time % 1000) / 10);
@@ -64,5 +72,6 @@ export const useTimer = (level) => {
     isTimeOver,
     startTimer,
     stopTimer,
+    resetTimer,
   };
 };
