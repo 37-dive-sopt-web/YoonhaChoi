@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-const Card = ({ value }) => {
+const Card = ({ value, onClick }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
 
   const handleClick = () => {
+    onClick();
     setIsCardOpen((prev) => !prev);
   };
 

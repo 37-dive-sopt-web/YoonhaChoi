@@ -2,8 +2,16 @@ import Tab from "../tab";
 import Card from "./card";
 import { LEVEL_TO_GRID } from "../../utils/random-deck";
 
-const GameBoard = ({ deck, level }) => {
+const GameBoard = ({ deck, level, timer }) => {
   const [, cols] = LEVEL_TO_GRID[level] || [4, 4];
+
+  const { startTimer } = timer;
+
+  const handleCardClick = () => {
+    if (!timer.isRunning && !timer.isTimeOver) {
+      startTimer();
+    }
+  };
 
   return (
     <div>
@@ -22,7 +30,11 @@ const GameBoard = ({ deck, level }) => {
         }}
       >
         {deck.map((card) => (
-          <Card key={card.id} value={card.value} />
+          <Card
+            key={card.id}
+            value={card.value}
+            onClick={() => handleCardClick(card.id)}
+          />
         ))}
       </div>
     </div>
