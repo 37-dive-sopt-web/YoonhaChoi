@@ -1,8 +1,12 @@
 import GameItem from "./game-item";
 import LevelSelet from "./level-selet";
 
-const LevelSection = ({ level, onLevelChange, timer }) => {
-  const { timeDisplay, isTimeOver, isRunning } = timer;
+const LevelSection = ({ level, onLevelChange, timer, game }) => {
+  const { timeDisplay, isRunning, isTimeOver } = timer;
+  const { matchedPairs, totalPairs } = game;
+
+  const remainingPairs = totalPairs - matchedPairs;
+  const successDisplay = `${matchedPairs}/${totalPairs}`;
 
   let message = "카드를 눌러 게임을 시작";
 
@@ -19,8 +23,8 @@ const LevelSection = ({ level, onLevelChange, timer }) => {
       <LevelSelet level={level} onLevelChange={onLevelChange} />
       <div className="flex gap-2">
         <GameItem title={"남은 시간"} value={timeDisplay} />
-        <GameItem title={"성공한 짝"} value={"45.00"} />
-        <GameItem title={"남은 짝"} value={"45.00"} />
+        <GameItem title={"성공한 짝"} value={successDisplay} />
+        <GameItem title={"남은 짝"} value={remainingPairs} />
       </div>
       <span className="font-bold">안내 메시지</span>
       <div className="p flex w-full items-center justify-between rounded-2xl bg-green-50 px-3 py-6 font-bold">

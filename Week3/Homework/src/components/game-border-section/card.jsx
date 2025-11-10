@@ -1,11 +1,7 @@
-import { useState } from "react";
-
-const Card = ({ value, onClick }) => {
-  const [isCardOpen, setIsCardOpen] = useState(false);
-
+const Card = ({ value, onClick, isCardOpen, isDisabled }) => {
   const handleClick = () => {
+    if (isDisabled) return;
     onClick();
-    setIsCardOpen((prev) => !prev);
   };
 
   const rotation = isCardOpen ? "rotate-y-180" : "";
