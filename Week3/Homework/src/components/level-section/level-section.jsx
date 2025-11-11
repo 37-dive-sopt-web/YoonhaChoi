@@ -11,7 +11,7 @@ const LevelSection = ({ level, onLevelChange, timer, game }) => {
   let message = "카드를 눌러 게임을 시작";
 
   if (isRunning) {
-    message = "잠시만 기다려 주세요";
+    message = "게임을 진행 중입니다.";
   } else if (isTimeOver) {
     message = "시간 초과";
   } else if (!isRunning && timeDisplay !== "00.00") {
