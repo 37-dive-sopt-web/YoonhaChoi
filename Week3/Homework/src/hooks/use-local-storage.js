@@ -2,20 +2,42 @@ import { useState, useEffect, useCallback } from "react";
 
 const STORAGE_KEY = "memoryGameRecords";
 
+// 기록 정렬
+const sortRecords = (records) => {
+  if (!records || records.length === 0) {
+    return [];
+  }
+
+  return [...records].sort((a, b) => {
+    if (a.level !== b.level) {
+      return b.level - a.level;
+    }
+
+    const timeA = parseFloat(a.clearTime);
+    const timeB = parseFloat(b.clearTime);
+
+    return timeA - timeB;
+  });
+};
+
+// 클리어 기록 관리
 export const useLocalStorage = () => {
   const [storedData, setStoredData] = useState([]);
 
   useEffect(() => {
-    try {
-      const storedRecords = window.localStorage.getItem(STORAGE_KEY);
-      if (storedRecords) {
-        setStoredData(JSON.parse(storedRecords));
+    const storedRecords = window.localStorage.getItem(STORAGE_KEY);
+
+    if (storedRecords) {
+      try {
+        const records = JSON.parse(storedRecords);
+        setStoredData(sortRecords(records));
+      } catch (error) {
+        setStoredData([]);
       }
-    } catch (error) {
-      console.error("Failed to load records from localStorage:", error);
     }
   }, []);
 
+  //새로운 기록 저장
   const addData = useCallback((level, clearTime) => {
     const newRecord = {
       timestamp: new Date().toISOString(),
@@ -26,13 +48,11 @@ export const useLocalStorage = () => {
     setStoredData((prevData) => {
       const updatedData = [...prevData, newRecord];
 
-      try {
-        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData));
-      } catch (error) {
-        console.error("Failed to save data:", error);
-      }
+      const updatedRecords = sortRecords(updatedData);
 
-      return updatedData;
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedRecords));
+
+      return updatedRecords;
     });
   }, []);
 
