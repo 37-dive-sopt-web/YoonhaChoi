@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useMemo } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 const CARD_STATUS = {
   CLOSED: "closed",
@@ -14,6 +14,7 @@ export const useGame = (deck, timer, addData) => {
   const [isGameOver, setIsGameOver] = useState(false);
   const [isWin, setIsWin] = useState(false);
   const [finishTime, setFinishTime] = useState(null);
+  const [pairHistory, setPairHistory] = useState([]);
 
   // 덱이 변경될 때마다 게임 상태 초기화
   useEffect(() => {
@@ -25,10 +26,10 @@ export const useGame = (deck, timer, addData) => {
     setOpenCardIds([]);
     setMatchedPairs(0);
     setIsProcessing(false);
-
     setIsGameOver(false);
     setIsWin(false);
     setFinishTime(null);
+    setPairHistory([]);
   }, [deck]);
 
   // 짝 검사 로직
@@ -42,6 +43,11 @@ export const useGame = (deck, timer, addData) => {
 
       const delayTime = 500;
 
+      const historyEntry = {
+        card1Value: card1.value,
+        card2Value: card2.value,
+      };
+
       if (card1.value === card2.value) {
         // 짝이 맞는 경우
         const timeoutId = setTimeout(() => {
@@ -51,6 +57,10 @@ export const useGame = (deck, timer, addData) => {
             [id2]: CARD_STATUS.MATCHED,
           }));
           setMatchedPairs((prev) => prev + 1);
+          setPairHistory((prevHistory) => [
+            { ...historyEntry, result: "성공" },
+            ...prevHistory,
+          ]);
           setOpenCardIds([]);
           setIsProcessing(false);
         }, delayTime);
@@ -63,6 +73,10 @@ export const useGame = (deck, timer, addData) => {
             [id1]: CARD_STATUS.CLOSED,
             [id2]: CARD_STATUS.CLOSED,
           }));
+          setPairHistory((prevHistory) => [
+            { ...historyEntry, result: "실패" },
+            ...prevHistory,
+          ]);
           setOpenCardIds([]);
           setIsProcessing(false);
         }, delayTime);
@@ -127,5 +141,6 @@ export const useGame = (deck, timer, addData) => {
     isGameOver,
     isWin,
     finishTime,
+    pairHistory,
   };
 };
