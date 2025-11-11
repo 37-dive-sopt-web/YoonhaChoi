@@ -2,18 +2,19 @@ import { useState, useCallback, useMemo } from "react";
 import { buildDeck } from "../utils/random-deck";
 import { useTimer } from "./use-timer";
 import { useGame } from "./use-game";
+import { useLocalStorage } from "./use-local-storage";
 import GameTabSection from "../components/tab-section/game-tab-section";
 import RankingTabSection from "../components/tab-section/ranking-tab-section";
 
 export const useTabControl = (initialTab = "게임") => {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [level, setLevel] = useState(1);
-
   const [deckKey, setDeckKey] = useState(0);
+  const { storedData, addData } = useLocalStorage();
 
   const timer = useTimer(level);
   const deck = useMemo(() => buildDeck(level), [level, deckKey]);
-  const game = useGame(deck, timer);
+  const game = useGame(deck, timer, addData);
 
   const handleGameReset = useCallback(() => {
     timer.resetTimer();
@@ -42,11 +43,12 @@ export const useTabControl = (initialTab = "게임") => {
           timer={timer}
           game={game}
           onGameReset={handleGameReset}
+          storedData={storedData}
         />
       );
     }
     if (activeTab === "랭킹") {
-      return <RankingTabSection />;
+      return <RankingTabSection storedData={storedData} />;
     }
   };
 

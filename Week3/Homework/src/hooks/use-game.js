@@ -6,7 +6,7 @@ const CARD_STATUS = {
   MATCHED: "matched",
 };
 
-export const useGame = (deck, timer) => {
+export const useGame = (deck, timer, addData) => {
   const [cardStates, setCardStates] = useState({}); // { [cardId]: "closed" | "open" | "matched" }
   const [openCardIds, setOpenCardIds] = useState([]); //현재 앞면이 보이는 카드 ID (최대 2개)
   const [matchedPairs, setMatchedPairs] = useState(0); // 성공한 짝의 쌍(Pair) 개수
@@ -82,12 +82,19 @@ export const useGame = (deck, timer) => {
       setIsWin(true);
 
       const timeTaken = (timer.limitTime - timer.timeLeft) / 1000;
-      setFinishTime(timeTaken.toFixed(2));
+      const formattedTime = timeTaken.toFixed(2);
+      setFinishTime(formattedTime);
+
+      if (addData) {
+        const currentLevel =
+          deck.length / 2 === 8 ? 1 : deck.length / 2 === 12 ? 2 : 3;
+        addData(currentLevel, formattedTime);
+      }
     } else if (isTimeOver && !isGameOver) {
       setIsGameOver(true);
       setIsWin(false);
     }
-  }, [matchedPairs, deck.length, timer]);
+  }, [matchedPairs, deck.length, timer, isGameOver, addData]);
 
   const handleCardClick = useCallback(
     (clickedCardId) => {
