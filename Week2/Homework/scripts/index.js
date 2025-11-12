@@ -6,9 +6,11 @@ import { renderMemberList, onClickDelete } from "./render.js";
 
 const searchForm = document.querySelector("form");
 const deleteButton = document.querySelector(
-  ".list-title button[type='delete']"
+  ".list-title button[data-action='delete']"
 );
-const plusButton = document.querySelector(".list-title button[type='plus']");
+const plusButton = document.querySelector(
+  ".list-title button[data-action='plus']"
+);
 const resetButton = searchForm.querySelector('button[type="reset"]');
 
 // 초기화 함수
