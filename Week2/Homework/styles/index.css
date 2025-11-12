@@ -1,0 +1,41 @@
+:root {
+  /* 컬러 */
+  --main-color: #fdfb83;
+  --point-color: #fff700;
+  --sub-color: #ffffff;
+  --font-color: #aaaaaa;
+
+  /* 폰트 크기 */
+  --font-md: 1rem;
+  --font-sm: 0.8rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f7fae4;
+}
+
+main {
+  margin: 8.5rem 3rem 0 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  background-color: var(--sub-color);
+  max-width: 80rem;
+}

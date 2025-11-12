@@ -1,0 +1,46 @@
+.list-title {
+  display: grid;
+  grid-template-columns: auto 6rem 4rem;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.member-list {
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: var(--point-color);
+}
+
+thead tr {
+  border: none;
+}
+
+tr {
+  border: 1px solid var(--font-color);
+  border-left: none;
+  border-right: none;
+}
+
+tr:hover {
+  background-color: var(--main-color);
+}
+
+th {
+  padding: 0.7rem 0;
+  text-align: left;
+}
+
+tbody a {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+td {
+  padding: 0.8rem 0;
+}
+
+.no-data {
+  text-align: center;
+}

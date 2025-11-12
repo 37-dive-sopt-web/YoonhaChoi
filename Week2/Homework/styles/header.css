@@ -1,0 +1,27 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 1rem 8rem;
+  background-color: var(--main-color);
+}
+
+.header-logo {
+  justify-self: start;
+  font-size: 2rem;
+}
+
+.header-title {
+  justify-self: center;
+  font-size: 2rem;
+  white-space: nowrap;
+}
+.header-name {
+  justify-self: end;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
