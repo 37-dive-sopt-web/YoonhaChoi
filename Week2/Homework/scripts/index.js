@@ -1,7 +1,8 @@
 import "./storage.js";
 import { handleFormSubmit, handleFormReset } from "./filter.js";
-import { renderMemberList, onClickDelete } from "./render.js";
 import { onClickPlus, setupModalListeners } from "./modal.js";
+import { setupCheckboxDelegation } from "./checkbox.js";
+import { renderMemberList, onClickDelete } from "./render.js";
 
 const searchForm = document.querySelector("form");
 const deleteButton = document.querySelector(
@@ -19,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   deleteButton.addEventListener("click", onClickDelete);
   plusButton.addEventListener("click", onClickPlus);
+
+  setupCheckboxDelegation();
 
   setupModalListeners();
 });

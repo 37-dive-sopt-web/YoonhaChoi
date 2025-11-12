@@ -1,6 +1,6 @@
 import { getMembers, updateLocalStorage } from "./storage.js";
 import { getFilterValues, filterMembers } from "./filter.js";
-import { attachCheckboxListeners } from "./checkbox.js";
+import { updateHeaderCheckbox } from "./checkbox.js";
 
 const memberListBody = document.querySelector(".member-list tbody");
 const noDataParagraph = document.querySelector(".member-list + p");
@@ -42,7 +42,7 @@ export const renderMemberList = (data) => {
   memberListBody.innerHTML = tableHtml;
   noDataParagraph.style.display = "none";
 
-  attachCheckboxListeners();
+  updateHeaderCheckbox();
 };
 
 // '삭제' 버튼 클릭 핸들러

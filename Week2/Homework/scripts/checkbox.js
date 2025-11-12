@@ -1,44 +1,43 @@
-// 체크박스 동기화 함수
-export const attachCheckboxListeners = () => {
-  const headerCheckbox = document.querySelector(
-    ".member-list thead input[type='checkbox']"
-  );
-  const itemCheckboxes = document.querySelectorAll(".checkListItem");
+const memberListBody = document.querySelector(".member-list tbody");
+const headerCheckbox = document.querySelector(
+  ".member-list thead input[type='checkbox']"
+);
 
+const updateHeaderCheckbox = () => {
   if (!headerCheckbox) return;
 
-  const updateHeaderCheckbox = () => {
-    const totalItems = itemCheckboxes.length;
-    if (totalItems === 0) {
-      headerCheckbox.checked = false;
-      return;
-    }
+  const itemCheckboxes = document.querySelectorAll(".checkListItem");
+  const totalItems = itemCheckboxes.length;
 
-    const checkedItems = document.querySelectorAll(
-      ".checkListItem:checked"
-    ).length;
-    headerCheckbox.checked = totalItems === checkedItems;
-  };
+  if (totalItems === 0) {
+    headerCheckbox.checked = false;
+    return;
+  }
 
-  // 헤더 체크박스 변경 핸들러
-  const handleHeaderCheck = (event) => {
-    const isChecked = event.target.checked;
-    itemCheckboxes.forEach((checkbox) => {
-      checkbox.checked = isChecked;
-    });
-  };
+  const checkedItems = document.querySelectorAll(
+    ".checkListItem:checked"
+  ).length;
+  headerCheckbox.checked = totalItems === checkedItems;
+};
 
-  const handleItemCheck = () => {
-    updateHeaderCheckbox();
-  };
+const handleHeaderCheck = (event) => {
+  if (!headerCheckbox) return;
+  const isChecked = event.target.checked;
+  document.querySelectorAll(".checkListItem").forEach((checkbox) => {
+    checkbox.checked = isChecked;
+  });
+};
 
-  headerCheckbox.removeEventListener("change", handleHeaderCheck);
+export const setupCheckboxDelegation = () => {
+  if (!memberListBody || !headerCheckbox) return;
+
   headerCheckbox.addEventListener("change", handleHeaderCheck);
 
-  itemCheckboxes.forEach((checkbox) => {
-    checkbox.removeEventListener("change", handleItemCheck);
-    checkbox.addEventListener("change", handleItemCheck);
+  memberListBody.addEventListener("change", (e) => {
+    if (e.target.classList.contains("checkListItem")) {
+      updateHeaderCheckbox();
+    }
   });
-
-  updateHeaderCheckbox();
 };
+
+export { updateHeaderCheckbox };
