@@ -3,6 +3,12 @@ import { renderMemberList } from "./render.js";
 
 const searchForm = document.querySelector("form");
 
+const includesCI = (a = "", b = "") =>
+  String(a).toLowerCase().includes(String(b).toLowerCase());
+
+const equalsCI = (a = "", b = "") =>
+  String(a).toLowerCase() === String(b).toLowerCase();
+
 // 필터링 함수
 export const getFilterValues = () => {
   const formData = new FormData(searchForm);
@@ -17,29 +23,30 @@ export const getFilterValues = () => {
   return filters;
 };
 
-// 필터링 로직 구현
-export const filterMembers = (membersData, filters) => {
-  return membersData.filter((member) => {
-    for (const key in filters) {
-      const filterValue = filters[key];
-      const memberValue = String(member[key]);
+// 필터링 로직 함수
+const FILTERS = {
+  name: (m, v) => includesCI(m.name, v),
+  englishName: (m, v) => includesCI(m.englishName, v),
+  github: (m, v) => includesCI(m.github, v),
 
-      if (["name", "englishName", "github"].includes(key)) {
-        if (!memberValue.toLowerCase().includes(filterValue.toLowerCase())) {
-          return false;
-        }
-      } else if (["age", "codeReviewGroup"].includes(key)) {
-        if (memberValue !== filterValue) {
-          return false;
-        }
-      } else if (["gender", "role"].includes(key)) {
-        if (memberValue.toLowerCase() !== filterValue.toLowerCase()) {
-          return false;
-        }
-      }
-    }
-    return true;
-  });
+  age: (m, v) => Number(m.age) === Number(v),
+  codeReviewGroup: (m, v) => Number(m.codeReviewGroup) === Number(v),
+
+  gender: (m, v) => equalsCI(m.gender, v),
+  role: (m, v) => equalsCI(m.role, v),
+};
+
+// 필터링 로직
+export const filterMembers = (membersData, filters) => {
+  const entries = Object.entries(filters);
+
+  if (!entries.length) return membersData;
+
+  return membersData.filter((member) =>
+    entries.every(([key, value]) => {
+      return FILTERS[key]?.(member, value) ?? true;
+    })
+  );
 };
 
 // 검색 폼 제출 핸들러
