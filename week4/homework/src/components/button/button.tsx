@@ -1,10 +1,10 @@
 interface ButtonProps {
   children: string;
-  disabled?: boolean;
+  disabled: boolean;
   onClick: () => void;
 }
 
-const Button = ({ children, disabled, onClick, ...props }: ButtonProps) => {
+const Button = ({ children, disabled, onClick }: ButtonProps) => {
   const baseStyle =
     "h-10 w-full rounded-xl text-white font-bold transition-colors duration-200";
 
@@ -19,7 +19,6 @@ const Button = ({ children, disabled, onClick, ...props }: ButtonProps) => {
       disabled={disabled}
       onClick={onClick}
       className={`${baseStyle} ${stateClasses}`}
-      {...props}
     >
       {children}
     </button>
