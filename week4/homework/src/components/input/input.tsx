@@ -5,7 +5,7 @@ interface InputProps {
 
 const Input = ({ label, placeholder }: InputProps) => {
   return (
-    <div className="flex w-full flex-col gap-2">
+    <div className="flex w-full flex-col gap-2 pb-6">
       <label className="text-gray-500">{label}</label>
 
       <input
