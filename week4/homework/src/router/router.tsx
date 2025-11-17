@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import LoginPage from "../pages/login/login";
-import MemberPage from "../pages/member";
+import MemberPage from "../pages/member/member";
 import MyPage from "../pages/mypage/mypage";
 import SignupPage from "../pages/signup/signup";
 import Header from "../components/header/header";
