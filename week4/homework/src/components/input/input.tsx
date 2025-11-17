@@ -1,17 +1,18 @@
-interface InputProps {
+import * as styles from "./input.css";
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   placeholder: string;
 }
 
-const Input = ({ label, placeholder }: InputProps) => {
+const Input = ({ label, placeholder, ...props }: InputProps) => {
   return (
-    <div className="flex w-full flex-col gap-2 pb-6">
-      <label className="text-gray-500">{label}</label>
-
+    <div className={styles.container}>
+      <label className={styles.label}>{label}</label>
       <input
         type="text"
         placeholder={placeholder}
-        className="h-12 w-full rounded-xl border border-gray-300 px-4 text-gray-800 placeholder:text-gray-500 focus:ring-2 focus:ring-teal-400 focus:outline-none"
+        className={styles.input}
+        {...props}
       />
     </div>
   );
