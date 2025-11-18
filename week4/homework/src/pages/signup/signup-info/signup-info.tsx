@@ -4,6 +4,7 @@ import Input from "../../../components/input/input";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import * as styles from "./signup-info.css";
+import { container as signupContainer } from "../../login/login.css"; // 경로는 프로젝트 구조에 맞게 수정했습니다.
 
 interface InfoData {
   name: string;
@@ -44,7 +45,7 @@ const SignupInfo = ({ handleSubmit, prevStep }: SignupInfoProps) => {
   const buttonText = isLoading ? "가입중..." : "회원가입";
 
   return (
-    <div>
+    <div className={signupContainer}>
       <Link
         to="#"
         onClick={prevStep}

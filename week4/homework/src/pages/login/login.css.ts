@@ -3,9 +3,10 @@ import { themeVars } from '../../styles/theme.css';
 
 export const container = style({
     display: 'flex',
-    flexDirection:'column',
-    justifyContent: 'center',
     height: '100vh',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding:'3rem 45rem',
 })
 
 export const title = style({

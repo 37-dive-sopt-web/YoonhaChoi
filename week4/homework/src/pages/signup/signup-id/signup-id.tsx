@@ -3,6 +3,7 @@ import Button from "../../../components/button/button";
 import Input from "../../../components/input/input";
 import { useState } from "react";
 import  * as styles from "./signup-id.css";
+import { container as signupContainer } from "../../login/login.css"; // 경로는 프로젝트 구조에 맞게 수정했습니다.
 
 const MAX_LENGTH = 50;
 const MIN_LENGTH = 6;
@@ -31,7 +32,7 @@ const SignupId = ({ nextStep, prevStep }: SignupIdProps) => {
     : "";
 
   return (
-    <div >
+    <div className={signupContainer}>
       <Link to="/login" onClick={prevStep} className={styles.arrow}>
         ←
       </Link>

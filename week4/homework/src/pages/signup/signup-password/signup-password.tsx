@@ -3,6 +3,7 @@ import Button from "../../../components/button/button";
 import Input from "../../../components/input/input";
 import { useState } from "react";
 import * as styles from "./signup-password.css";
+import { container as signupContainer } from "../../login/login.css"; // 경로는 프로젝트 구조에 맞게 수정했습니다.
 
 interface SignupPasswordProps {
   nextStep: (data: { password: string }) => void;
@@ -25,7 +26,7 @@ const SignupPassword = ({ nextStep, prevStep }: SignupPasswordProps) => {
   };
 
   return (
-    <div>
+    <div className={signupContainer}>
       <Link
         to="#"
         onClick={prevStep}
