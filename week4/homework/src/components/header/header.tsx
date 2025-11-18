@@ -37,7 +37,7 @@ const Header = () => {
           </ul>
         </nav>
       </header>
-      <main>
+      <main className={styles.mainContainer}>
         <Outlet />
       </main>
 

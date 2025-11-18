@@ -10,7 +10,7 @@ export const title = style({
 export const table = style({
     display: 'flex',
     padding: '2rem 2rem',
-
+    width: '100%',
 });
 
 export const tbody = style({

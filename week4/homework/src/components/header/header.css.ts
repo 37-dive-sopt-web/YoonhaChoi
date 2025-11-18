@@ -7,8 +7,7 @@ export const headerContainer = style({
     alignItems: 'center',
     backgroundColor: themeVars.color.teal_01,
     padding: '1rem 15rem',
-    color:themeVars.color.white
-
+    color:themeVars.color.white,
 });
 
 export const leftSection = style({
@@ -38,3 +37,12 @@ export const tabButton = style({
         }
     }
 });
+
+export const mainContainer = style({
+    display: 'flex',
+    height: '80vh',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding:'3rem 25rem',
+})
