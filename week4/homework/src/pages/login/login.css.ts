@@ -6,7 +6,7 @@ export const container = style({
     height: '100vh',
     flexDirection: 'column',
     justifyContent: 'center',
-    padding:'3rem 45rem',
+    padding:'3rem 30rem',
 })
 
 export const title = style({
