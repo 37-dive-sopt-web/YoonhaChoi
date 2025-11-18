@@ -1,29 +1,25 @@
-import { useNavigate } from "react-router";
-import * as styles from "./header.css";
 import { Outlet } from "react-router";
+import * as styles from "./header.css";
+import { useHeaderLogic } from "../../hooks/use-delete"; 
+import Modal from "../../components/modal/modal"; 
+
 
 const Header = () => {
-  const navigate = useNavigate();
-
-  const tabs = [
-    { name: "내 정보", path: "/mypage" },
-    { name: "회원 조회", path: "/mypage/members" },
-    { name: "로그아웃", action: "" },
-    { name: "회원탈퇴", path: "" },
-  ];
-
-  const handleTabClick = (tab: (typeof tabs)[0]) => {
-    if (tab.path && tab.path !== "/mypage/delete" && tab.path !== "") {
-      navigate(tab.path);
-    }
-  };
+  const {
+    isModalOpen,
+    tabs,
+    userName,
+    handleTabClick,
+    confirmDeactivate,
+    setIsModalOpen,
+  } = useHeaderLogic();
 
   return (
     <div>
       <header className={styles.headerContainer}>
         <div className={styles.leftSection}>
           <p className={styles.title}>마이페이지</p>
-          <p>안녕하세요, 최윤하님</p>
+          <p>안녕하세요. {userName}님</p> 
         </div>
 
         <nav>
@@ -44,6 +40,12 @@ const Header = () => {
       <main>
         <Outlet />
       </main>
+
+      <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onConfirm={confirmDeactivate}
+      />
     </div>
   );
 };
