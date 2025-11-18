@@ -37,7 +37,6 @@ const SignupInfo = ({ handleSubmit, prevStep }: SignupInfoProps) => {
 
     handleSubmit({ name, email, age });
 
-    alert(" 회원가입이 완료되었습니다!");
     setIsLoading(false);
     navigate("/login");
   };

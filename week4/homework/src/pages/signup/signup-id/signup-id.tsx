@@ -32,7 +32,7 @@ const SignupId = ({ nextStep, prevStep }: SignupIdProps) => {
 
   return (
     <div >
-      <Link to="#" onClick={prevStep} className={styles.arrow}>
+      <Link to="/login" onClick={prevStep} className={styles.arrow}>
         ←
       </Link>
       <p className={styles.title}>회원가입</p>

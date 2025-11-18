@@ -38,7 +38,7 @@ const SignupPage = () => {
   const renderStep = () => {
     switch (step) {
       case 0: // 아이디 입력
-        return <SignupId nextStep={nextStep} />;
+        return <SignupId nextStep={nextStep} prevStep={prevStep} />;
       case 1: // 비밀번호 입력
         return <SignupPassword nextStep={nextStep} prevStep={prevStep} />;
       case 2: // 정보 입력 (마지막 단계)
