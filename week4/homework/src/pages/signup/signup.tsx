@@ -5,7 +5,6 @@ import SignupInfo from "./signup-info/signup-info";
 
 
 const SignupPage = () => {
-  // 커스텀 훅에서 모든 상태와 함수를 가져옵니다.
   const { 
     step, 
     signupMessage, 
