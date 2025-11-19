@@ -1,4 +1,4 @@
-import { useSignup } from "../../hooks/use-signup"; // 💡 커스텀 훅 import
+import { useSignup } from "../../hooks/use-signup"; // 커스텀 훅 import
 
 // 단계별 컴포넌트 import는 유지
 import SignupId from "./signup-id/signup-id";
@@ -7,7 +7,7 @@ import SignupInfo from "./signup-info/signup-info";
 
 
 const SignupPage = () => {
-  // 💡 커스텀 훅에서 모든 상태와 함수를 가져옵니다.
+  // 커스텀 훅에서 모든 상태와 함수를 가져옵니다.
   const { 
     step, 
     signupMessage, 
