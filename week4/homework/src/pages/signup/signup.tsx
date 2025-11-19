@@ -1,6 +1,4 @@
-import { useSignup } from "../../hooks/use-signup"; // 커스텀 훅 import
-
-// 단계별 컴포넌트 import는 유지
+import { useSignup } from "../../hooks/use-signup"; 
 import SignupId from "./signup-id/signup-id";
 import SignupPassword from "./signup-password/signup-password";
 import SignupInfo from "./signup-info/signup-info";
@@ -22,11 +20,10 @@ const SignupPage = () => {
         return <SignupId nextStep={nextStep} prevStep={prevStep} />;
       case 1: // 비밀번호 입력
         return <SignupPassword nextStep={nextStep} prevStep={prevStep} />;
-      case 2: // 정보 입력 (마지막 단계)
+      case 2: // 정보 입력
         return (
           <>
             <SignupInfo handleSubmit={handleSubmit} prevStep={prevStep} />
-            {/* 💡 에러 메시지 표시 */}
             {signupMessage && !signupMessage.includes("처리 중") && (
               <div
                 style={{ color: "red", textAlign: "center", marginTop: "10px" }}
